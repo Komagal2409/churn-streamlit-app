@@ -89,8 +89,6 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
-    
-    if st.button("Save Prediction"):
 
     new_data = {
         "Name": name,
@@ -119,6 +117,7 @@ if os.path.exists("employee_predictions.csv"):
 else:
     st.info("No predictions saved yet.")
     
+
 
 
 
