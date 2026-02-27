@@ -102,21 +102,22 @@ if st.button("Predict"):
 
     file_path = "employee_predictions.csv"
 
-    if os.path.exists(file_path):
-        df.to_csv(file_path, mode="a", header=False, index=False)
-    else:
-        df.to_csv(file_path, index=False)
+if os.path.exists(file_path):
+    df.to_csv(file_path, mode="a", header=False, index=False)
+else:
+    df.to_csv(file_path, index=False)
 
-    st.success(" Data Saved Successfully!")
-    
-    st.header("Dashboard")
+st.success(" Data Saved Successfully!")
 
-     if os.path.exists("employee_predictions.csv"):
-         data = pd.read_csv("employee_predictions.csv")
-         st.dataframe(data)
-     else:
-         st.info("No predictions saved yet.")
+st.header("Dashboard")
+
+if os.path.exists("employee_predictions.csv"):
+    data = pd.read_csv("employee_predictions.csv")
+    st.dataframe(data)
+else:
+    st.info("No predictions saved yet.")
     
+
 
 
 
