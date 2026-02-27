@@ -9,12 +9,19 @@ def bg_color():
     st.markdown(
     """
     <style>
+    .stApp {
+        background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    }
+
     section[data-testid="stSidebar"] {
         background-color: #ff69b4;
     }
 
-    .stApp {
-        background-color: #fff0f5;
+    .stButton>button {
+        background-color: #ff1493;
+        color: white;
+        border-radius: 12px;
+        font-weight: bold;
     }
         .quote {
         font-size:20px;
@@ -79,6 +86,7 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
 
