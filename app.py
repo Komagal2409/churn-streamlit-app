@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
 model = joblib.load("churn_model (1).pkl")
 cols = joblib.load("model_columns (1).pkl")
@@ -117,6 +118,7 @@ if os.path.exists("employee_predictions.csv"):
 else:
     st.info("No predictions saved yet.")
     
+
 
 
 
