@@ -37,7 +37,7 @@ st.title("Churn Prediction")
 
 menu = st.sidebar.selectbox("Menu", ["🏠 Home", "📊 Dashboard", "🤖 Predict"])
 st.markdown('<p class="quote">"Understanding  Customer behaviour is the key to the Organization Success."</p>', unsafe_allow_html=True)
-st.image("https://media.licdn.com/dms/image/v2/C5612AQF7E7hVZoiX5w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1594306960827?e=2147483647&v=beta&t=GY2dIrJr3ig7XaieFsaTB_9kdBPP4oAelgt2Y_ezpMU", use_container_width=True)
+st.image("https://media.licdn.com/dms/image/v2/C5612AQF7E7hVZoiX5w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1594306960827?e=2147483647&v=beta&t=GY2dIrJr3ig7XaieFsaTB_9kdBPP4oAelgt2Y_ezpMU", width=180, use_container_width=True)
 st.header("""
 This AI-powered application predicts whether a customer is likely to leave a bank.
 Using Machine Learning, businesses can take proactive steps to retain customers.
@@ -55,6 +55,16 @@ EstimatedSalary = st.number_input("EstimatedSalary")
 
 Gender = st.selectbox("Gender",["Male","Female"])
 Geography = st.selectbox("Geography",["France","Germany","Spain"])
+
+col1, col2 = st.columns(2)
+
+with col1:
+    CreditScore = st.number_input("Credit Score")
+    Age = st.number_input("Age")
+
+with col2:
+    Balance = st.number_input("Balance")
+    IsActiveMember = st.selectbox("Active Member", [0,1])
 
 input_dict = {
     "CreditScore":CreditScore,
@@ -75,6 +85,7 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
 
