@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import joblib
 import os
+from datetime import datetime
+
+file_path = "employee_predictions.csv"
 
 model = joblib.load("churn_model (1).pkl")
 cols = joblib.load("model_columns (1).pkl")
@@ -121,6 +124,7 @@ elif menu == "Dashboard":
     else:
         st.info("No predictions saved yet.")
     
+
 
 
 
