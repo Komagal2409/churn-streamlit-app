@@ -59,7 +59,7 @@ if menu == "Home":
 
 Name = st.text_input("Enter Your Name")
 Email = st.text_input("Enter your Email")
-Date = st.text_input("Select Date")
+Date = st.text_input("Enter The Date")
 
 CreditScore = st.number_input("CreditScore")
 Age = st.number_input("Age")
@@ -89,6 +89,37 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+    
+    if st.button("Save Prediction"):
+
+    new_data = {
+        "Name": name,
+        "Email": email,
+        "Date": date,
+        "Prediction": prediction,
+        "Timestamp": datetime.now()
+    }
+
+    df = pd.DataFrame([new_data])
+
+    file_path = "employee_predictions.csv"
+
+    if os.path.exists(file_path):
+        df.to_csv(file_path, mode="a", header=False, index=False)
+    else:
+        df.to_csv(file_path, index=False)
+
+    st.success(" Data Saved Successfully!")
+    
+    st.header("Dashboard")
+
+if os.path.exists("employee_predictions.csv"):
+    data = pd.read_csv("employee_predictions.csv")
+    st.dataframe(data)
+else:
+    st.info("No predictions saved yet.")
+    
+
 
 
 
