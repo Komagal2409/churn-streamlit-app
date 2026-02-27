@@ -57,7 +57,11 @@ Using Machine Learning, businesses can take proactive steps to retain customers.
 
 if menu == "Home":
     st.header("Welcome to Home Page")
-    
+
+Name = st.text_input("Enter Your Name")
+Email = st.text_input("Enter your Email")
+Date = st.text_input("Select Date")
+
 CreditScore = st.number_input("CreditScore")
 Age = st.number_input("Age")
 Balance = st.number_input("Balance")
@@ -86,6 +90,7 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
 
