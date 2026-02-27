@@ -5,15 +5,21 @@ import numpy as np
 # Load model
 model = pickle.load(open("churn_model.pkl", "rb"))
 
-st.title("Customer Churn Prediction 🚀")
+st.title("Customer Churn Prediction")
 
 credit_score = st.number_input("Credit Score")
 age = st.number_input("Age")
-balance = st.number_input("Balance")
 salary = st.number_input("Estimated Salary")
+balance = st.number_input("Balance")
+isactive = st.number_input("IsActiveMember")
+Female = st.number_input("Gender_Female")
+Male = st.number_input("Gender_Male")
+France = st.number_input("Geography_France")
+Spain = st.number_input("Geography_Spain")
+Germany = st.number_input("Geography_Germany")
 
 if st.button("Predict"):
-    features = np.array([[credit_score, age, balance, salary]])
+    features = np.array([[credit_score, age, balance, salary, isactive, Female, Male, France, Spain, Germany]])
     prediction = model.predict(features)
 
     if prediction[0] == 1:
