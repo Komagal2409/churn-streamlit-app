@@ -7,8 +7,9 @@ cols = joblib.load("model_columns (1).pkl")
 
 def bg_color():
     st.markdown(
-        """
-          section[data-testid="stSidebar"] {
+    """
+    <style>
+    section[data-testid="stSidebar"] {
         background-color: #ff69b4;
     }
 
@@ -88,6 +89,7 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
 
