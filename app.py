@@ -37,7 +37,7 @@ st.title("Churn Prediction")
 
 menu = st.sidebar.selectbox("Menu", ["🏠 Home", "📊 Dashboard", "🤖 Predict"])
 st.markdown('<p class="quote">"Understanding  Customer behaviour is the key to the Organization Success."</p>', unsafe_allow_html=True)
-st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f7", use_container_width=True)
+st.image("https://media.licdn.com/dms/image/v2/C5612AQF7E7hVZoiX5w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1594306960827?e=2147483647&v=beta&t=GY2dIrJr3ig7XaieFsaTB_9kdBPP4oAelgt2Y_ezpMU", use_container_width=True)
 st.header("""
 This AI-powered application predicts whether a customer is likely to leave a bank.
 Using Machine Learning, businesses can take proactive steps to retain customers.
@@ -75,5 +75,6 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
