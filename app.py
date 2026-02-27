@@ -60,16 +60,6 @@ EstimatedSalary = st.number_input("EstimatedSalary")
 Gender = st.selectbox("Gender",["Male","Female"])
 Geography = st.selectbox("Geography",["France","Germany","Spain"])
 
-col1, col2 = st.columns(2)
-
-with col1:
-    CreditScore = st.number_input("Credit Score")
-    Age = st.number_input("Age")
-
-with col2:
-    Balance = st.number_input("Balance")
-    IsActiveMember = st.selectbox("Active Member", [0,1])
-
 input_dict = {
     "CreditScore":CreditScore,
     "Age":Age,
@@ -89,6 +79,7 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
 
 
