@@ -111,12 +111,13 @@ if st.button("Predict"):
     
     st.header("Dashboard")
 
-if os.path.exists("employee_predictions.csv"):
-    data = pd.read_csv("employee_predictions.csv")
-    st.dataframe(data)
-else:
-    st.info("No predictions saved yet.")
+     if os.path.exists("employee_predictions.csv"):
+         data = pd.read_csv("employee_predictions.csv")
+         st.dataframe(data)
+     else:
+         st.info("No predictions saved yet.")
     
+
 
 
 
