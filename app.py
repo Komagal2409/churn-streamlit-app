@@ -90,7 +90,6 @@ input_df = input_df[cols]
 if st.button("Predict"):
     prediction = "Churn" if pred[0]==1 else "No Churn"
     st.write(prediction)
-    "Prediction": prediction,
 
     new_data = { 
         "Name": Name,
@@ -117,6 +116,7 @@ if st.button("Predict"):
        else:
            st.info("No predictions saved yet.")
     
+
 
 
 
