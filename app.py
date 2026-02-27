@@ -88,8 +88,13 @@ input_df = pd.DataFrame([input_dict])
 input_df = input_df[cols]
 
 if st.button("Predict"):
-    prediction = "Churn" if pred[0]==1 else "No Churn"
-    st.write(prediction)
+
+    pred = model.predict(input_df)
+
+    if pred[0] == 1:
+        st.write("Churn")
+    else:
+        st.write("No Churn")
 
     new_data = { 
         "Name": Name,
@@ -116,6 +121,7 @@ if st.button("Predict"):
        else:
            st.info("No predictions saved yet.")
     
+
 
 
 
