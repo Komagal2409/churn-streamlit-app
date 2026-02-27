@@ -9,14 +9,14 @@ st.title("Customer Churn Prediction")
 
 credit_score = st.number_input("Credit Score")
 age = st.number_input("Age")
-salary = st.number_input("Estimated Salary")
 balance = st.number_input("Balance")
 isactive = st.number_input("IsActiveMember")
+salary = st.number_input("Estimated Salary")
 Female = st.number_input("Gender_Female")
 Male = st.number_input("Gender_Male")
 France = st.number_input("Geography_France")
-Spain = st.number_input("Geography_Spain")
 Germany = st.number_input("Geography_Germany")
+Spain = st.number_input("Geography_Spain")
 
 if st.button("Predict"):
     features = np.array([[credit_score, age, balance, salary, isactive, Female, Male, France, Spain, Germany]])
@@ -26,3 +26,4 @@ if st.button("Predict"):
         st.error("Customer will churn ❌")
     else:
         st.success("Customer will stay ✅")
+
