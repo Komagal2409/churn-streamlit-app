@@ -88,36 +88,36 @@ input_df = pd.DataFrame([input_dict])
 input_df = input_df[cols]
 
 if st.button("Predict"):
-    pred = model.predict(input_df)
-    st.write("Churn" if pred[0]==1 else "No Churn")
+    prediction = "Churn" if pred[0]==1 else "No Churn"
+    st.write(prediction)
+    "Prediction": prediction,
 
-    new_data = {
-        "Name": name,
-        "Email": email,
-        "Date": date,
+    new_data = { 
+        "Name": Name,
+        "Email": Email,
+        "Date": Date,
         "Prediction": prediction,
-        "Timestamp": datetime.now()
     }
 
     df = pd.DataFrame([new_data])
-
     file_path = "employee_predictions.csv"
 
-if os.path.exists(file_path):
-    df.to_csv(file_path, mode="a", header=False, index=False)
-else:
-    df.to_csv(file_path, index=False)
+    if os.path.exists(file_path):
+       df.to_csv(file_path, mode="a", header=False, index=False)
+    else:
+       df.to_csv(file_path, index=False)
 
-st.success(" Data Saved Successfully!")
+       st.success(" Data Saved Successfully!")
 
-st.header("Dashboard")
+       st.header("Dashboard")
 
-if os.path.exists("employee_predictions.csv"):
-    data = pd.read_csv("employee_predictions.csv")
-    st.dataframe(data)
-else:
-    st.info("No predictions saved yet.")
+       if os.path.exists("employee_predictions.csv"):
+          data = pd.read_csv("employee_predictions.csv")
+          st.dataframe(data)
+       else:
+           st.info("No predictions saved yet.")
     
+
 
 
 
