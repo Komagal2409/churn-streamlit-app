@@ -12,6 +12,20 @@ def bg_color():
         .stApp {
             background-color:  #ffc0cb;
         }
+        .quote {
+        font-size:20px;
+        font-style: italic;
+        text-align:center;
+        color:#4a044e;
+        padding:10px;
+    }
+     .feature-box {
+        background-color:white;
+        padding:20px;
+        border-radius:15px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        text-align:center;
+    }
         </style>
         """,
         unsafe_allow_html=True
@@ -22,6 +36,13 @@ bg_color()
 st.title("Churn Prediction")
 
 menu = st.sidebar.selectbox("Menu", ["🏠 Home", "📊 Dashboard", "🤖 Predict"])
+st.markdown('<p class="quote">"Understanding  Customer behaviour is the key to the Organization Success."</p>', unsafe_allow_html=True)
+st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f7", use_container_width=True)
+st.header("""
+This AI-powered application predicts whether a customer is likely to leave a bank.
+Using Machine Learning, businesses can take proactive steps to retain customers.
+""")
+
 
 if menu == "🏠 Home":
     st.header("Welcome to Home Page")
@@ -54,4 +75,5 @@ input_df = input_df[cols]
 if st.button("Predict"):
     pred = model.predict(input_df)
     st.write("Churn" if pred[0]==1 else "No Churn")
+
 
